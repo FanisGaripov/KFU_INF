@@ -1,2 +1,0 @@
-# KFU_INF
-ITIS
