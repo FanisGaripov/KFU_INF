@@ -52,13 +52,13 @@ public class SeaBattleField {
 	*/
 	private boolean checkField(int size, int x, int y, int orientation) {
 		if (orientation == 0) {
-			if (y + size >= 10) return false;
+			if (y + size > 10) return false;
 			for (int i = 0; i < size; ++i) {
 				if (battleField[y + i][x] == 3) return false;
 			}
 		}
 		else {
-			if (x + size >= 10) return false;
+			if (x + size > 10) return false;
 			for (int i = 0; i < size; ++i) {
 				if (battleField[y][x+i] == 3) return false;
 			}

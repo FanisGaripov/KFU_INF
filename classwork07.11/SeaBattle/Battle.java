@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Battle {
 	public SeaBattleField seaBattleField;
+	private int shotsCount = 0;
 
 	public Battle() {
 		System.out.println("Battle");
@@ -25,10 +26,12 @@ public class Battle {
 			byte y = (byte) sc.nextInt();
 			if (seaBattleField.battleField[y - 1][x - 1] == 0) {
 				seaBattleField.battleField[y - 1][x - 1] = 4; // промахнулись
+				shotsCount++;
 				System.out.println("Промах! Повезёт в следующий раз!");
 				seaBattleField.showField();
 			} else if (seaBattleField.battleField[y - 1][x - 1] == 3) {
 				seaBattleField.battleField[y - 1][x - 1] = 1;
+				shotsCount++;
 				for (int i = 0; i < 10; ++i) {
 					if (seaBattleField.ships[i].pointIncluded((byte) (y - 1),(byte) (x - 1))) {
 						// здесь нужен сеттер для состояния корабля
@@ -49,6 +52,8 @@ public class Battle {
 				seaBattleField.showField();
 				if (seaBattleField.isWin()) { // победа при подбитии всех кораблей
 					System.out.println("Победа! Подбиты все корабли!");
+					System.out.println("Кол-во выстрелов: " + shotsCount);
+					System.out.println("Кол-во промахов: " + (shotsCount - 4 * 1 - 3 * 2 - 2 * 3 - 4 * 1));
 					break;
 				}
 			} else {

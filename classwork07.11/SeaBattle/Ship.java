@@ -50,9 +50,9 @@ public class Ship {
 
 	public boolean pointIncluded(byte y, byte x) { // проверяем, входит ли эта точка в корабль
 		if (xStart == xEnd) {
-			return yStart <= y && y <= yEnd; 
+			return x == xStart && yStart <= y && y <= yEnd; 
 		} else if (yStart == yEnd) {
-			return xStart <= x && x <= xEnd;
+			return y == yStart && xStart <= x && x <= xEnd;
 		}
 		return false;
 	}
